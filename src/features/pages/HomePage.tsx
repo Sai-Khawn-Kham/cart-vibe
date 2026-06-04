@@ -1,11 +1,15 @@
 import HeroSection from '../components/HeroSection'
-import ProductSection from '../components/ProductSection'
+import NewProductSection from "../components/NewProductSection";
+import TrendingProductSection from "../components/TrendingProductSection";
+import YouMayLikeSection from "../components/YouMayLikeSection";
 
 const HomePage = () => {
   return (
     <>
       <HeroSection />
-      <ProductSection />
+      <NewProductSection />
+      <TrendingProductSection />
+      <YouMayLikeSection />
     </>
   )
 }
