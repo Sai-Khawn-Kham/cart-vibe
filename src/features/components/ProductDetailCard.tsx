@@ -13,7 +13,7 @@ const ProductDetailCard = ({ details }: { details: string }) => {
   };
   return (
     <div className="flex justify-center items-center mt-10">
-      <div className="relative size-[600px]">
+      <div className="relative size-150">
         <ul className="absolute z-10 top-1/2 -translate-y-1/2">
           {filteredProducts.map((product) => (
             <li
@@ -31,7 +31,7 @@ const ProductDetailCard = ({ details }: { details: string }) => {
         <div className="absolute top-0 right-0 w-130 h-full rounded-2xl px-14 py-10 pl-20 flex flex-col items-center justify-between bg-white/20 shadow-lg shadow-black/5 border border-white/25 border-t-white/50 border-l-white/50">
           <h2 className="text-2xl font-bold">{showProduct?.name}</h2>
           <img
-            className={`w-4/5 duration-300 ${showProduct.category === "shoes" ? "hover:-rotate-45 hover:translate-x-5" : "hover:scale-115"}`}
+            className={`w-4/5 duration-300 ${showProduct.category === "shoes" ? "hover:-rotate-12 hover:scale-130 hover:translate-x-2" : "hover:scale-115"}`}
             src={showProduct?.src}
           />
           <ul className="flex justify-center items-center gap-3">
