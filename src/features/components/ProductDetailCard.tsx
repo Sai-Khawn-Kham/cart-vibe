@@ -12,7 +12,7 @@ const ProductDetailCard = ({ details }: { details: string }) => {
     setShowProduct(p);
   };
   return (
-    <div className="flex justify-center items-center mt-10">
+    <div className="flex justify-center items-center">
       <div className="relative size-150">
         <ul className="absolute z-10 top-1/2 -translate-y-1/2">
           {filteredProducts.map((product) => (
