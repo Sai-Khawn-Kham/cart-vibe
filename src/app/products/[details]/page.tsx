@@ -8,7 +8,7 @@ type ProductDetailPageProps = {
   params: Promise<RouteParams>
 }
 
-export default async function Home({ params } : ProductDetailPageProps) {
+export default async function Page({ params } : ProductDetailPageProps) {
   const { details } = await params;
   return (
     <ProductDetailPage details={details} />

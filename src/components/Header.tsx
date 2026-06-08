@@ -19,9 +19,6 @@ const Header = () => {
             <li>
               <Link href="/products" className="hover:underline">Products</Link>
             </li>
-            <li>
-              <Link href="/cart" className="hover:underline">Cart</Link>
-            </li>
           </ul>
         </nav>
         <div>

@@ -6,6 +6,7 @@ import useCategoryStore from "@/store/useCategoryStore"
 
 const Footer = () => {
   const {categories} = useCategoryStore();
+  const filteredCategories = categories.filter((category) => category !== "all");
   return (
     <footer className="mt-auto">
       <div className="bg-white/10 py-10">
@@ -24,22 +25,16 @@ const Footer = () => {
           <div className="space-x-10 flex">
             <div className="">
               <h3 className="text-lg font-semibold mb-3">Products</h3>
-              <ul className="text-gray-500">
-                {categories.map((category, index) => (
-                  <li key={index}>
-                    <a href={`/products?category=${category.toLowerCase()}`} className=" capitalize hover:underline">
+              <p className="text-gray-500">
+                {filteredCategories.map((category, index) => (
+                  <span key={index}>
+                    <a href={`/products?category=${category.toLowerCase()}`} className="capitalize hover:underline">
                       {category}
                     </a>
-                  </li>
+                    {index !== filteredCategories.length - 1 && " | "}
+                  </span>
                 ))}
-              </ul>
-            </div>
-            <div className="">
-              <h3 className="text-lg font-semibold mb-3">Company</h3>
-              <ul className="text-gray-500">
-                <li><a href="/about-us" className="hover:underline">About</a></li>
-                <li><a href="/contact-us" className="hover:underline">Contact</a></li>
-              </ul>
+              </p>
             </div>
           </div>
         </Container>
