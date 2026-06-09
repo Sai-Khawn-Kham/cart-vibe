@@ -3,8 +3,10 @@ import Link from "next/link";
 import Container from "./Container";
 import { HiOutlineHeart, HiOutlineShoppingBag } from "react-icons/hi";
 import { BsPerson } from "react-icons/bs";
+import useWishListStore from "@/store/useWishListStore";
 
 const Header = () => {
+  const { wishLists } = useWishListStore();
   return (
     <header className="sticky top-0 z-50">
       <Container className="flex justify-between items-center py-4 bg-gray-300 rounded shadow-xl border border-white/25">
@@ -24,7 +26,12 @@ const Header = () => {
         <div>
           <ul className="flex gap-2">
             <li>
-              <HiOutlineHeart className="size-8 hover:border border-gray-500 rounded-full p-1" />
+              <Link href="/wishlist" className="relative">
+                <HiOutlineHeart className="size-8 hover:border border-gray-500 rounded-full p-1" />
+                {wishLists.length > 0 && (
+                  <span className="text-[10px] absolute -top-0.5 -right-0.5 bg-gray-700 text-white rounded-full px-1">{wishLists.length}</span>
+                )}
+              </Link>
             </li>
             <li>
               <HiOutlineShoppingBag className="size-8 hover:border border-gray-500 rounded-full p-1" />

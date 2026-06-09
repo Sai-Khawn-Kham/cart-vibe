@@ -16,3 +16,9 @@ export type ProductDataType = {
 export type CategoryType = {
   categories: string[];
 }
+
+export type WishListType = {
+  wishLists: ProductType[],
+  addToWishList: (product: ProductType) => void,
+  removeFromWishList: (id: number) => void
+}
