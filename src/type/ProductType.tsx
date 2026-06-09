@@ -7,6 +7,7 @@ export type ProductType = {
   price: { original: number; discount: number | false };
   category: string;
   sizes: string[];
+  variant?: string[]
 }
 
 export type ProductDataType = {

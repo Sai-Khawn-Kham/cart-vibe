@@ -6,7 +6,7 @@ import Link from "next/link";
 const CategorySection = ({activeCategory} : {activeCategory: string}) => {
   const { categories } = useCategoryStore();
   return (
-    <Container className="">
+    <Container className="mb-10">
       <ul className="overflow-auto text-nowrap hide-scroll-bar flex gap-2">
         {categories.map((category, index) => (
           <li key={index}>

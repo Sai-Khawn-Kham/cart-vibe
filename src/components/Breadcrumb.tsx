@@ -37,8 +37,8 @@ const BreadCrumb: FC<BreadcrumbPropType> = ({ currentPageTitle, links }) => {
           ))}
           <li className="flex items-center">
             <HiChevronRight className="text-gray-500" />
-            <span className="ms-1 md:ms-2 font-medium text-gray-500">
-              {currentPageTitle}
+            <span className="ms-1 md:ms-2 font-medium text-gray-500 capitalize">
+              {currentPageTitle.replaceAll("-", " ")}
             </span>
           </li>
         </ol>

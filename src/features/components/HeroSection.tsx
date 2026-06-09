@@ -17,7 +17,7 @@ const HeroSection = () => {
     };
   }, []);
   return (
-    <Container className='bg-white/20 rounded-lg shadow-lg border border-white/25 py-24 mt-10'>
+    <Container className='bg-white/20 rounded-lg shadow-lg border border-white/25 py-24 mt-10 mb-14'>
       <div className="flex flex-col gap-3 pl-5">
         <div className='text-3xl uppercase font-bold'><span ref={el} /></div>
         <div><span className='text-6xl font-bold'>20</span><span className=''>%off</span></div>
