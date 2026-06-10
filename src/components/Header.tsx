@@ -6,12 +6,17 @@ import { BsPerson } from "react-icons/bs";
 import useWishListStore from "@/store/useWishListStore";
 import WishlistSidebar from "./WishlistSidebar";
 import { useState } from "react";
+import useCartStore from "@/store/useCartStore";
+import CartSidebar from "./CartSidebar";
 
 const Header = () => {
   const { wishLists } = useWishListStore();
+  const { carts } = useCartStore();
   const [ openWishlist, setOpenWishlist ] = useState(false);
+  const [ openCart, setOpenCart ] = useState(false);
 
   const handleWishlist = () => setOpenWishlist(!openWishlist);
+  const handleCart = () => setOpenCart(!openCart);
   return (
     <header className="sticky top-0 z-50">
       <Container className="flex justify-between items-center py-4 bg-gray-300 rounded shadow-xl border border-white/25">
@@ -36,8 +41,11 @@ const Header = () => {
                 <span className="text-[10px] absolute -top-0.5 -right-0.5 bg-gray-700 text-white rounded-full px-1">{wishLists.length}</span>
               )}
             </li>
-            <li>
-              <HiOutlineShoppingBag className="size-8 hover:border border-gray-500 rounded-full p-1" />
+            <li onClick={handleCart} className="relative">
+              <HiOutlineShoppingBag className="size-8 hover:border border-gray-500 rounded-full p-1 cursor-pointer" />
+              {carts.length > 0 && (
+                <span className="text-[10px] absolute -top-0.5 -right-0.5 bg-gray-700 text-white rounded-full px-1">{carts.length}</span>
+              )}
             </li>
             <li>
               <BsPerson className="size-8 hover:border border-gray-500 rounded-full p-1" />
@@ -47,6 +55,9 @@ const Header = () => {
       </Container>
       <div onClick={handleWishlist} className={`${openWishlist ? "block" : "hidden"} absolute w-full h-screen top-0 z-100 bg-black/50`}>
         <WishlistSidebar handleWishlist={handleWishlist} />
+      </div>
+      <div onClick={handleCart} className={`${openCart ? "block" : "hidden"} absolute w-full h-screen top-0 z-100 bg-black/50}`}>
+        <CartSidebar handleCart={handleCart} />
       </div>
     </header>
   );

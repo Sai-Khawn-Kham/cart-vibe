@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import useWishListStore from "@/store/useWishListStore";
 import { HiOutlineHeart, HiX } from "react-icons/hi"
 import WishlistCard from "./WishlistCard";

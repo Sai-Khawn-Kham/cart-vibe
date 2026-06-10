@@ -23,7 +23,7 @@ const WishlistCard = ({product, handleWishlist}: {product: ProductType, handleWi
         <img src={product.src} alt={product.name} className="w-10/12" />
       </div>
       <div className="flex flex-col justify-between p-3">
-        <h3 className="text-lg font-medium font-serif">{product.name}</h3>
+        <h3 className="text-lg font-medium font-serif line-clamp-1">{product.name}</h3>
         <p className="">{discount ? formatDiscount : formatOriginal}MMK</p>
         <div className="flex gap-3 text-sm">
           <button onClick={() => removeFromWishList(product.id)} className="bg-gray-300 px-2 py-1 rounded">Remove</button>

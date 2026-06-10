@@ -1,10 +1,12 @@
 'use client';
 import Container from '@/components/Container'
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
 const HeroSection = () => {
   const el = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: ['new collections'],
@@ -22,7 +24,7 @@ const HeroSection = () => {
         <div className='text-3xl uppercase font-bold'><span ref={el} /></div>
         <div><span className='text-6xl font-bold'>20</span><span className=''>%off</span></div>
         <div className="">
-          <button className='inline-block bg-gray-900 text-gray-100 text-lg py-1.5 px-3 rounded-lg uppercase'>shop now</button>
+          <Link href="/products/nike-air-zoom" className='inline-block bg-gray-900 text-gray-100 text-lg py-1.5 px-3 rounded-lg uppercase'>shop now</Link>
         </div>
       </div>
       <div className="relative float-right -mt-40 mr-20">

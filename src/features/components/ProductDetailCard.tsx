@@ -1,4 +1,5 @@
 "use client";
+import useCartStore from "@/store/useCartStore";
 import useWishListStore from "@/store/useWishListStore";
 import { ProductType } from "@/type/ProductType";
 import { useState } from "react";
@@ -7,6 +8,7 @@ import { BsHeart, BsHeartFill } from "react-icons/bs";
 
 const ProductDetailCard = ({ product }: { product: ProductType}) => {
   const { wishLists, addToWishList, removeFromWishList } = useWishListStore();
+  const { carts, addToCart } = useCartStore();
   const [ showImg, setShowImg] = useState(product.src);
 
   const variant = product.variant;
@@ -21,14 +23,26 @@ const ProductDetailCard = ({ product }: { product: ProductType}) => {
     setShowImg(p);
   };
 
-  const handleAddToWishList = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleAddToWishList = () => {
     if(wishLists.find((wishList) => wishList.id === product.id)){
       removeFromWishList(product.id);
       toast.success("Product removed from wish list");
     } else {
       addToWishList(product);
       toast.success("Product added to wish list");
+    }
+  }
+
+  const handleAddToCart = () => {
+    if(carts.find((cart) => cart.productId === product.id)){
+      toast.error("Product already in cart");
+    } else {
+      addToCart({
+        id: Date.now(),
+        productId: product.id,
+        quantity: 1
+      });
+      toast.success("Product added to cart");
     }
   }
   return (
@@ -76,7 +90,7 @@ const ProductDetailCard = ({ product }: { product: ProductType}) => {
               ))}
             </ul>
             <p><span className="font-bold">Price: </span><span className={`${discount ? "line-through text-gray-500" : ""}`}>K{formatOriginal}</span> {discount && <span className="">K{formatDiscount}</span>}</p>
-            <button className="bg-gray-50 font-bold px-6 py-2 rounded-full shadow-lg hover:tracking-wider">
+            <button onClick={handleAddToCart} className={`${carts.find((cart) => cart.productId === product.id) ? "bg-gray-800 text-gray-100 cursor-not-allowed" : "bg-gray-50"} font-bold px-6 py-2 rounded-full shadow-lg hover:tracking-wider`}>
               Add To Cart
             </button>
           </div>

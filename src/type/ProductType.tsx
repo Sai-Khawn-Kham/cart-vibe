@@ -19,7 +19,22 @@ export type CategoryType = {
 }
 
 export type WishListType = {
-  wishLists: ProductType[],
-  addToWishList: (product: ProductType) => void,
-  removeFromWishList: (id: number) => void
+  wishLists: ProductType[];
+  addToWishList: (product: ProductType) => void;
+  removeFromWishList: (id: number) => void;
+}
+
+export type CartType = {
+  id: number;
+  productId: number;
+  quantity: number;
+}
+
+export type CartDataType = {
+  carts: CartType[];
+  addToCart: (newCart: CartType) => void;
+  increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
 }
