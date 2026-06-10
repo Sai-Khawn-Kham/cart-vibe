@@ -32,6 +32,7 @@ const CartCard = ({ cart, handleCart }: { cart: CartType, handleCart: () => void
 
   const handleRemoveFromCart = () => {
     removeFromCart(cart.id);
+    toast.success("Product removed from cart");
   }
   return (
     <div className="flex">
@@ -41,16 +42,16 @@ const CartCard = ({ cart, handleCart }: { cart: CartType, handleCart: () => void
       <div className="grow flex flex-col justify-between p-3">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-medium font-serif line-clamp-1">{showProduct?.name}</h3>
-          <button onClick={handleRemoveFromCart}>
+          <button onClick={handleRemoveFromCart} className="cursor-pointer">
             <HiTrash className="size-5 text-red-500" />
           </button>
         </div>
         <div className="flex justify-between items-center gap-2 text-sm">
           <p className="text-gray-600">{discount ? formatDiscount : formatOriginal}MMK</p>
           <div className="">
-            <button onClick={handleDecrease} className="bg-gray-400 rounded px-1.5">-</button>
+            <button onClick={handleDecrease} className="bg-gray-400 rounded px-1.5 cursor-pointer">-</button>
             <span className="px-1">{cart.quantity}</span>
-            <button onClick={handleIncrease} className="bg-gray-400 rounded px-1.5">+</button>
+            <button onClick={handleIncrease} className="bg-gray-400 rounded px-1.5 cursor-pointer">+</button>
           </div>
           <p>{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}MMK</p>
         </div>

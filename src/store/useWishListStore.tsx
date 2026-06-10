@@ -10,6 +10,9 @@ const useWishListStore = create<WishListType>()(persist((set) => ({
   removeFromWishList: (id: number) => set((state) => ({
     wishLists: state.wishLists.filter((el: ProductType) => el.id !== id)
   })),
+  clearWishlist: () => set((state) => ({
+    wishLists: []
+  }))
 }), {
   name: "wish-list-store",
   storage: createJSONStorage(() => localStorage),

@@ -28,7 +28,7 @@ const ProductCard = ({ product, className = "" }: { product: ProductType, classN
     <div className={`${className} relative w-58 h-83 group bg-white/25 rounded-lg shadow-lg border border-white/25 hover:border-white`}>
       <div
         onClick={handleAddToWishList}
-        className="absolute top-2 right-2 z-10 border border-gray-50 hover:border-gray-500 rounded-lg text-gray-500 p-1 flex justify-center items-center"
+        className="absolute top-2 right-2 z-10 border border-gray-50 hover:border-gray-500 rounded-lg text-gray-500 p-1 flex justify-center items-center cursor-pointer"
       >
         {wishLists.find((wishList) => wishList.id === product.id) ? (
           <BsHeartFill />

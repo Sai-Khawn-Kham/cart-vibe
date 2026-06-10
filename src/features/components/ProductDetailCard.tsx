@@ -68,7 +68,7 @@ const ProductDetailCard = ({ product }: { product: ProductType}) => {
           <h2 className="text-2xl font-bold">{product.name}</h2>
           <div
             onClick={handleAddToWishList}
-            className="absolute top-2 right-2 border border-gray-50 hover:border-gray-500 active:border-cyan-500 rounded-lg text-gray-500 p-1 flex justify-center items-center"
+            className="absolute top-2 right-2 border border-gray-50 hover:border-gray-500 active:border-cyan-500 rounded-lg text-gray-500 p-1 flex justify-center items-center cursor-pointer"
           >
             {wishLists.find((wishList) => wishList.id === product.id) ? (
               <BsHeartFill />
@@ -90,7 +90,7 @@ const ProductDetailCard = ({ product }: { product: ProductType}) => {
               ))}
             </ul>
             <p><span className="font-bold">Price: </span><span className={`${discount ? "line-through text-gray-500" : ""}`}>K{formatOriginal}</span> {discount && <span className="">K{formatDiscount}</span>}</p>
-            <button onClick={handleAddToCart} className={`${carts.find((cart) => cart.productId === product.id) ? "bg-gray-800 text-gray-100 cursor-not-allowed" : "bg-gray-50"} font-bold px-6 py-2 rounded-full shadow-lg hover:tracking-wider`}>
+            <button onClick={handleAddToCart} className={`${carts.find((cart) => cart.productId === product.id) ? "bg-gray-800 text-gray-100" : "bg-gray-50"} font-bold px-6 py-2 rounded-full shadow-lg hover:tracking-wider cursor-pointer`}>
               Add To Cart
             </button>
           </div>

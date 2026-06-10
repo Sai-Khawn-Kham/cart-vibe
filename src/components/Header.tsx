@@ -8,6 +8,7 @@ import WishlistSidebar from "./WishlistSidebar";
 import { useState } from "react";
 import useCartStore from "@/store/useCartStore";
 import CartSidebar from "./CartSidebar";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const { wishLists } = useWishListStore();
@@ -17,6 +18,10 @@ const Header = () => {
 
   const handleWishlist = () => setOpenWishlist(!openWishlist);
   const handleCart = () => setOpenCart(!openCart);
+
+  const handleUser = () => {
+    toast.success("User logged in");
+  }
   return (
     <header className="sticky top-0 z-50">
       <Container className="flex justify-between items-center py-4 bg-gray-300 rounded shadow-xl border border-white/25">
@@ -47,8 +52,8 @@ const Header = () => {
                 <span className="text-[10px] absolute -top-0.5 -right-0.5 bg-gray-700 text-white rounded-full px-1">{carts.length}</span>
               )}
             </li>
-            <li>
-              <BsPerson className="size-8 hover:border border-gray-500 rounded-full p-1" />
+            <li onClick={handleUser}>
+              <BsPerson className="size-8 hover:border border-gray-500 rounded-full p-1 cursor-pointer" />
             </li>
           </ul>
         </div>

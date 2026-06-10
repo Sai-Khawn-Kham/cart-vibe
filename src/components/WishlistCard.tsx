@@ -2,6 +2,7 @@
 import useWishListStore from '@/store/useWishListStore';
 import { ProductType } from '@/type/ProductType'
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const WishlistCard = ({product, handleWishlist}: {product: ProductType, handleWishlist: () => void}) => {
   const { removeFromWishList } = useWishListStore();
@@ -12,6 +13,11 @@ const WishlistCard = ({product, handleWishlist}: {product: ProductType, handleWi
 
   const formatDiscount = discount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const formatOriginal = original.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  const handleRemoveFromWishList = () => {
+    removeFromWishList(product.id);
+    toast.success("Product removed from wish list");
+  }
 
   const handleSeeMore = () => {
     router.push(`/products/${product.path}`);
@@ -26,8 +32,8 @@ const WishlistCard = ({product, handleWishlist}: {product: ProductType, handleWi
         <h3 className="text-lg font-medium font-serif line-clamp-1">{product.name}</h3>
         <p className="">{discount ? formatDiscount : formatOriginal}MMK</p>
         <div className="flex gap-3 text-sm">
-          <button onClick={() => removeFromWishList(product.id)} className="bg-gray-300 px-2 py-1 rounded">Remove</button>
-          <button onClick={handleSeeMore} className="bg-gray-300 px-2 py-1 rounded">View Product</button>
+          <button onClick={handleRemoveFromWishList} className="bg-gray-300 px-2 py-1 rounded cursor-pointer">Remove</button>
+          <button onClick={handleSeeMore} className="bg-gray-300 px-2 py-1 rounded cursor-pointer">View Product</button>
         </div>
       </div>
     </div>

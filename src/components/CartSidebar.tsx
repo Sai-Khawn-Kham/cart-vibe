@@ -31,6 +31,7 @@ const CartSidebar = ({ handleCart }: { handleCart: () => void }) => {
   const handleOrder = () => {
     clearCart();
     toast.success("Order placed successfully");
+    handleCart();
   }
   return (
     <div onClick={stopPropagation} className="absolute right-0 w-100 h-full bg-gray-200 flex flex-col">
@@ -54,19 +55,19 @@ const CartSidebar = ({ handleCart }: { handleCart: () => void }) => {
         <div className="flex justify-end gap-10 text-right">
           <div>
             <p className="text-gray-500">Total</p>
-            <p className="font-semibold">{total}</p>
+            <p className="font-semibold">{total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
           </div>
           <div>
             <p className="text-gray-500">Tax</p>
-            <p className="font-semibold">{tax}</p>
+            <p className="font-semibold">{tax.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
           </div>
           <div>
             <p className="text-gray-500">Net Total</p>
-            <p className="font-semibold">{netTotal}</p>
+            <p className="font-semibold">{netTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
           </div>
         </div>
         <div className="text-end mt-3">
-          <button onClick={handleOrder} className="bg-gray-700 text-gray-50 py-1 px-2 rounded">Order Now</button>
+          <button onClick={handleOrder} className="bg-gray-700 text-gray-50 py-1 px-2 rounded cursor-pointer">Order Now</button>
         </div>
       </div>
     </div>

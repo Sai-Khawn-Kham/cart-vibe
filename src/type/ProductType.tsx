@@ -22,6 +22,7 @@ export type WishListType = {
   wishLists: ProductType[];
   addToWishList: (product: ProductType) => void;
   removeFromWishList: (id: number) => void;
+  clearWishlist: () => void;
 }
 
 export type CartType = {
